@@ -1,0 +1,16 @@
+#
+# This is to build an unsolvated monolayer of DPPC
+#
+
+tolerance 2.0
+filetype pdb
+output output.pdb
+
+structure dspc.pdb
+	number 100
+	inside box 0. 0. 0. 120. 120. 30.
+	atoms 1
+		below plane 0. 0. 1. 4.
+	end atoms
+end structure
+

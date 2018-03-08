@@ -1,0 +1,59 @@
+; Run control parameters
+integrator	= md
+dt		= 0.0005 ; ps
+nsteps		= 4000000
+
+nstxout		= 5000
+nstvout		= 5000
+nstenergy	= 5000
+nstlog		= 5000
+energygrps	= Other SOL
+
+; Neighborsearching parameters
+nstlist 	= 1
+ns_type		= grid
+pbc		= xy
+rlist		= 1.0
+
+; Options for electrostatics and vdw 
+coulombtype	= PME
+pme_order 	= 4
+fourierspacing	= 0.16
+rcoulomb	= 1.0
+vdw-type	= Cut-off
+rvdw		= 1.0
+
+; Temperature coupling
+tcoupl		= v-rescale
+tc-grps		= Other SOL
+tau_t		= 0.1 0.1
+ref_t		= 300 300
+
+; Dispersion correction
+DispCorr	= EnerPres
+
+; Walls to make it a monolayer
+nwall 		= 2
+wall_type 	= 10-4
+wall_density 	= 5 5 
+wall_atomtype 	= CTL3 CTL3
+wall_r_linpot 	= -1
+wall_ewald_zfac	= 3
+ewald_geometry	= 3dc
+
+; Pressure coupling is off
+pcoupl		= berendsen 
+pcoupltype	= semiisotropic
+tau-p		= 2.0 2.0
+ref_p		= 10.0 1.0
+compressibility	= 4.5e-5 4.5e-5
+
+; Generate velocities for startup run
+gen_vel		= no 
+
+; Options for bonds
+constraints	= all-bonds
+continuation	= no
+constraint_algorithm	= lincs
+lincs_iter	= 1
+lincs_order	= 4
